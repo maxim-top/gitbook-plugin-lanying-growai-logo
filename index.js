@@ -1,32 +1,28 @@
-var fs = require('fs');
-var cheerio = require('cheerio');
-var url = require('url');
+var fs = require('fs')
+var cheerio = require('cheerio')
 
-var urls = [];
+var urls = []
 
 var rootStyleDefault = 'text-align: center; padding: 20px;'
 
 module.exports = {
   hooks: {
-    "page": function (page) {
+    'page': function (page) {
+      if (this.output.name !== 'website') return page
 
-      if (this.output.name != 'website') return page;
+      var lang = this.isLanguageBook() ? this.config.values.language : ''
+      if (lang) lang = lang + '/'
 
-      var lang = this.isLanguageBook() ? this.config.values.language : '';
-      if (lang) lang = lang + '/';
-
-      var outputUrl = this.output.toURL('_book/' + lang + page.path);
+      var outputUrl = this.output.toURL('_book/' + lang + page.path)
 
       urls.push({
         url: outputUrl + (outputUrl.substr(-5, 5) !== '.html' ? 'index.html' : '')
-      });
+      })
 
-      return page;
-
+      return page
     },
 
-    "finish": function () {
-      var $, $el, html;
+    'finish': function () {
       if (!this.options.pluginsConfig || !this.options.pluginsConfig.logo) {
         return
       }
@@ -45,7 +41,7 @@ module.exports = {
   }
 }
 
-function simpleLogo(logoConfig) {
+function simpleLogo (logoConfig) {
   var rootStyle = logoConfig.rootStyle || rootStyleDefault
   var logoStyle = logoConfig.logoStyle || ''
   var titleStyle = logoConfig.titleStyle || ''
@@ -70,7 +66,7 @@ function simpleLogo(logoConfig) {
   })
 }
 
-function customLogo(logoConfig) {
+function customLogo (logoConfig) {
   var templatePath = logoConfig.template
   var stylePath = logoConfig.style
   var template = ''
