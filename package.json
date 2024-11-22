@@ -20,13 +20,13 @@
     "header"
   ],
   "main": "index.js",
-  "name": "gitbook-plugin-logo",
+  "name": "gitbook-plugin-lanying-growai-logo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LanFly/gitbook-plugin-logo"
+    "url": "https://github.com/maxim-top/gitbook-plugin-lanying-growai-logo"
   },
   "bugs": {
-    "url": "https://github.com/LanFly/gitbook-plugin-logo/issues"
+    "url": "https://github.com/maxim-top/gitbook-plugin-lanying-growai-logo/issues"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
